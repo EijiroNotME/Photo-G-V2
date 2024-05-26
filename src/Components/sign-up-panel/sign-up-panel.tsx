@@ -8,7 +8,7 @@ function SignUpPanel() {
     return (
       <div className="w-full h-screen m-0 p-0 overflow-hidden">
         <div className="h-full flex items-center justify-center">
-          <div className="w-[95%] sm:w-[65%] md:w-[55%] lg:w-[45%] xl:w-[35%] h-[90%] sm:bg-primaryDarker sm:rounded-2xl sm:border-2 sm:shadow-2xl sm:shadow-gray-600 flex justify-center">
+          <div className="w-[95%] sm:w-[65%] md:w-[55%] lg:w-[45%] xl:w-[30%] h-[100vh] xl:h-[95%] bg-primaryDarker rounded-2xl border-2 shadow-2xl shadow-gray-600 flex justify-center">
             <div className="my-10 w-full m-20">
               <h1 className="font-bold text-5xl text-secondaryDarker">Code<span className="text-accent">Pix</span></h1>
               <div className="text-base">
@@ -41,7 +41,7 @@ function SignUpPanel() {
                 <div className='my-3 text-xs'>
                     <span>By continuing, you agree to CodePix,<span className='font-bold'> Terms of Service, Privacy Policy</span></span>
                     <div className='my-2'>
-                        <span>Already a member? <span className='font-bold'> <NavLink to="/log-in">Log in</NavLink></span></span>
+                        <span>Already a member? <span className='font-bold hover:text-accent transition-all'> <NavLink to="/log-in">Log in</NavLink></span></span>
                     </div>
                 </div>
                 </div>

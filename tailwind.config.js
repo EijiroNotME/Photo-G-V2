@@ -9,7 +9,8 @@ export default {
       colors: {
         primaryLighter: "#FFFFFF",
         primary: "#F8FCFF",
-        primaryDarker: "##E4E4E4",
+        primaryDarker: "#EFEFEF",
+        primaryDarker100: "#D3D3D3",
 
         secondaryLighter: "#0E0E0E",
         secondary: "#080808",

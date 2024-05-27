@@ -9,14 +9,15 @@ export default {
       colors: {
         primaryLighter: "#FFFFFF",
         primary: "#F8FCFF",
-        primaryDarker: "#EFEFEF",
-        primaryDarker100: "#D3D3D3",
+        primaryDarker: "#EEEEEE",
+        primaryDarker100: "#DCDCDC",
 
         secondaryLighter: "#0E0E0E",
         secondary: "#080808",
         secondaryDarker: "#000000",
 
         accent: "#0367FD",
+        google: "#F2F2F2",
       },
     },
   },

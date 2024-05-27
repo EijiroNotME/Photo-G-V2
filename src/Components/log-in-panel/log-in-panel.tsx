@@ -16,7 +16,7 @@ function LogInPanel() {
       <div className="h-full flex items-center justify-center">
         <div className="w-[95%] sm:w-[65%] md:w-[55%] lg:w-[45%] xl:w-[30%] h-[100vh] xl:h-[95%] bg-primaryDarker rounded-2xl border-2 shadow-2xl shadow-gray-600 flex justify-center">
           <div className="my-10 w-full px-8 sm:px-10 md:px-14 lg:px-20">
-            <h1 className="font-bold text-5xl text-secondaryDarker">Code<span className="text-accent">Pix</span></h1>
+            <h1 className="font-bold text-5xl text-secondaryDarker"><NavLink to="/">Code<span className="text-accent">Pix</span></NavLink></h1>
             <h3 className="text-2xl text-secondaryDarker/80 font-semibold">Log in to see more</h3>
             <div className="text-base">
               <div className="grid grid-cols-1 gap-2 my-4">
@@ -46,11 +46,11 @@ function LogInPanel() {
                   <h1>OR</h1>
                 </div>
                 <div className="grid grid-cols-1 gap-2 my-1 text-[10px] sm:text-[12px] md:text-xs">
-                  <button className="w-full h-10 relative rounded-full text-primary bg-accent border font-semibold hover:bg-accent/80 transition-all flex items-center justify-center">
+                  <button className="w-full h-10 relative rounded-full text-primary bg-accent font-semibold hover:bg-accent/80 transition-all flex items-center justify-center shadow-md shadow-secondary/20">
                     <img src={facebook} alt="Facebook icon" className="absolute left-4 h-5 w-5" />
                     <span>Continue with Facebook</span>
                   </button>
-                  <button className="w-full h-10 relative rounded-full text-secondary bg-primaryDarker border border-gray-300 font-semibold hover:bg-primaryDarker100 transition-all flex items-center justify-center">
+                  <button className="w-full h-10 relative rounded-full text-secondary bg-primaryDarker100 border-gray-300 font-semibold hover:bg-primaryDarker100/80 transition-all flex items-center justify-center shadow-md shadow-secondary/20">
                     <img src={google} alt="Google icon" className="absolute left-4 h-5 w-5" />
                     <span>Continue with Google</span>
                   </button>

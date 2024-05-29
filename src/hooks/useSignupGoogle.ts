@@ -13,40 +13,41 @@ function useSignUpGoogle() {
   const [errorGoogle, setErrorGoogle] = useState<string | null>(null);
   const [isPendingGoogle, setIsPendingGoogle] = useState<boolean>(false);
   const provider = new GoogleAuthProvider();
-  
+
   const signUpGoogle = async () => {
     setErrorGoogle(null);
     setIsPendingGoogle(true);
     try {
-        const res = await signInWithPopup(auth, provider);
-        // Get the user ID from the response
-        if (!res) {
+      const res = await signInWithPopup(auth, provider);
+      // Get the user ID from the response
+      if (!res) {
         throw new Error("Could not complete signup");
-        }
+      }
 
-        // Get user data from Google
-        const googleUser = res.user;
+      // Get user data from Google
+      const googleUser = res.user;
 
-        // Check if the user exists in Firestore
-        const userRef = doc(db, "users", googleUser.uid);
-        const docSnap = await getDoc(userRef);
+      // Check if the user exists in Firestore
+      const userRef = doc(db, "users", googleUser.uid);
+      const docSnap = await getDoc(userRef);
 
-        if (!docSnap.exists()) {
+      if (!docSnap.exists()) {
         // User does not exist, create a new user document in Firestore
         await setDoc(userRef, {
-            firstName: googleUser.displayName,
-            lastName: "",
-            userName: googleUser.displayName,
-            school: "",
-            campus: "",
-            course: "",
-            email: googleUser.email,
+          firstName: googleUser.displayName,
+          lastName: "",
+          school: "",
+          campus: "",
+          course: "",
+          email: googleUser.email,
         });
-        }
-
-        setIsPendingGoogle(false);
+      }
+      setIsPendingGoogle(false);
     } catch (error: any) {
-      if (error.code === "auth/popup-closed-by-user" || error.code === "auth/cancelled-popup-request") {
+      if (
+        error.code === "auth/popup-closed-by-user" ||
+        error.code === "auth/cancelled-popup-request"
+      ) {
         setIsPendingGoogle(false);
         setErrorGoogle(null); // Clear the error
       } else {
@@ -55,8 +56,8 @@ function useSignUpGoogle() {
         setIsPendingGoogle(false);
       }
     }
-  }
+  };
   return { errorGoogle, isPendingGoogle, signUpGoogle };
-};
+}
 
 export default useSignUpGoogle;

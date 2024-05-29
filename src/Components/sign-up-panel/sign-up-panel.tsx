@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import loadingSVG from "../../assets/svg/tube-spinner.svg";
-import facebook from "../../assets/icons/facebook (white).png";
 import google from "../../assets/icons/google.png";
 
 import { useState } from "react";
@@ -12,7 +11,6 @@ function SignUpPanel() {
   const [password, setPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-  const [username, setUserName] = useState<string>("");
   const [school, setSchool] = useState<string>("");
   const [campus, setCampus] = useState<string>("");
   const [course, setCourse] = useState<string>("");
@@ -21,16 +19,7 @@ function SignUpPanel() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    signup(
-      email,
-      password,
-      firstName,
-      lastName,
-      username,
-      school,
-      campus,
-      course
-    );
+    signup(email, password, firstName, lastName, school, campus, course);
   };
 
   const { errorGoogle, isPendingGoogle, signUpGoogle } = useSignupGoogle();
@@ -115,15 +104,6 @@ function SignUpPanel() {
                   </div>
                   <input
                     className="h-10 rounded-full bg-primaryDarker border-2 border-stone-400 hover:border-secondaryDarker/50 focus:border-accent focus:border-2 focus:outline-none focus:shadow-accent/20 focus:shadow-md px-4"
-                    type="text"
-                    placeholder="Username"
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                    value={username}
-                  />{" "}
-                  <input
-                    className="h-10 rounded-full bg-primaryDarker border-2 border-stone-400 hover:border-secondaryDarker/50 focus:border-accent focus:border-2 focus:outline-none focus:shadow-accent/20 focus:shadow-md px-4"
                     type="email"
                     placeholder="Email"
                     required
@@ -161,14 +141,6 @@ function SignUpPanel() {
                   <h1>OR</h1>
                 </div>
                 <div className="grid grid-cols-1 gap-2 my-1 text-[10px] sm:text-[12px] md:text-xs">
-                  <button className="w-full h-10 relative rounded-full text-primary bg-accent font-semibold hover:bg-accent/80 transition-all flex items-center justify-center shadow-md shadow-secondary/20">
-                    <img
-                      src={facebook}
-                      alt="Facebook icon"
-                      className="absolute left-4 h-5 w-5"
-                    />
-                    <span>Continue with Facebook</span>
-                  </button>
                   {!isPendingGoogle && (
                     <button
                       onClick={handleSignupGoogle}

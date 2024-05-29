@@ -2,6 +2,7 @@ import { useState } from "react";
 import { db, auth } from "../firebase/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { UserData } from "../types/users";
 
 function useSignup() {
   // Errors
@@ -19,7 +20,6 @@ function useSignup() {
     password: string,
     firstName: string,
     lastName: string,
-    userName: string,
     school: string,
     campus: string,
     course: string
@@ -34,17 +34,19 @@ function useSignup() {
       }
 
       const userId = res.user.uid;
-      // Set user document in Firestore
-      await setDoc(doc(db, "users", userId), {
+
+      const userData: UserData = {
         firstName,
         lastName,
-        userName,
         school,
         campus,
         course,
         email,
-      });
+      };
 
+      // Set user document in Firestore
+      await setDoc(doc(db, 'users', userId), userData);
+      
       setIsPending(false);
     } catch (error: any) {
       console.error("Error during signup:", error);

@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loadingSVG from "../../assets/svg/tube-spinner.svg";
 
-import facebook from "../../assets/icons/facebook (white).png";
 import google from "../../assets/icons/google.png";
 
 import useSignupGoogle from "../../hooks/useSignupGoogle";
@@ -107,14 +106,6 @@ function LogInPanel() {
                   <h1>OR</h1>
                 </div>
                 <div className="grid grid-cols-1 gap-2 my-1 text-[10px] sm:text-[12px] md:text-xs">
-                  <button className="w-full h-10 relative rounded-full text-primary bg-accent font-semibold hover:bg-accent/80 transition-all flex items-center justify-center shadow-md shadow-secondary/20">
-                    <img
-                      src={facebook}
-                      alt="Facebook icon"
-                      className="absolute left-4 h-5 w-5"
-                    />
-                    <span>Continue with Facebook</span>
-                  </button>
                   {!isPendingGoogle && (
                     <button
                       onClick={handleSignupGoogle}

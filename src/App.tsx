@@ -12,6 +12,7 @@ import SignupPage from "./Pages/sign-up-page/signup-page.tsx";
 import LogInPage from "./Pages/log-in-page/log-in-page.tsx";
 import HomePage from "./Pages/home-page/home-page.tsx";
 import VerificationPage from "./Pages/verify-page/verify-page.tsx"
+import ForgotPasswordPage from "./Pages/forgotPassword-page/forgotPassword-page.tsx";
 
 import { useAuth } from "./context/authContext";
  
@@ -26,33 +27,34 @@ function App() {
             path="/"
             element={
               !currentUser ? <LandingPage /> :
-              !currentUser.emailVerified ? <Navigate to="/verify"/> : <Navigate to="/home" />
+              !currentUser.emailVerified ? <VerificationPage /> : <Navigate to="/home" />
             }
           />
           <Route
             path="/sign-up"
             element={
               !currentUser ? <SignupPage /> :
-              !currentUser.emailVerified ? <Navigate to="/verify"/> : <Navigate to="/home" />
+              !currentUser.emailVerified ? <VerificationPage /> : <Navigate to="/home" />
             }
           />
           <Route
             path="/log-in"
             element={
               !currentUser ? <LogInPage /> :
-              !currentUser.emailVerified ? <Navigate to="/verify"/> : <Navigate to="/home" />
+              !currentUser.emailVerified ? <VerificationPage /> : <Navigate to="/home" />
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              !currentUser ? <ForgotPasswordPage /> :
+              !currentUser.emailVerified ? <VerificationPage /> : <Navigate to="/home" />
             }
           />
           <Route
             path="/home"
             element={
               currentUser && currentUser.emailVerified ? <HomePage /> : <Navigate to="/log-in" />
-            }
-          />
-          <Route
-            path="/verify"
-            element={
-              currentUser && !currentUser.emailVerified ? <VerificationPage /> : <Navigate to="/home" />
             }
           />
         </Routes>

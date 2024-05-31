@@ -1,15 +1,8 @@
-import useLogout from "../../hooks/useLogout";
+import HomePageBody from '../../Components/home-page-body/home-page-body.tsx'
 
-function Home() {
-  const { logout, error, isPending } = useLogout();
+function HomePage() {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <button onClick={logout} className="btn-logout" disabled={isPending}>
-        {isPending ? "Logging out..." : "Logout"}
-        {error && <p className="error">{error}</p>}
-      </button>
-    </div>
-  );
+    <HomePageBody />
+  )
 }
-export default Home;
+export default HomePage

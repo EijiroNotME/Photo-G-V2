@@ -9,8 +9,7 @@ import useSignupGoogle from "../../hooks/useSignupGoogle";
 function SignUpPanel() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [displayName, setdisplayName] = useState<string>("");
   const [school, setSchool] = useState<string>("");
   const [campus, setCampus] = useState<string>("");
   const [course, setCourse] = useState<string>("");
@@ -19,7 +18,7 @@ function SignUpPanel() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    signup(email, password, firstName, lastName, school, campus, course);
+    signup(email, password, displayName, school, campus, course);
   };
 
   const { errorGoogle, isPendingGoogle, signUpGoogle } = useSignupGoogle();
@@ -54,22 +53,12 @@ function SignUpPanel() {
                   <input
                     className="h-10 rounded-full bg-primaryDarker border-2 border-stone-400 hover:border-secondaryDarker/50 focus:border-accent focus:border-2 focus:outline-none focus:shadow-accent/20 focus:shadow-md px-4"
                     type="text"
-                    placeholder="First Name"
+                    placeholder="Full Name"
                     required
                     onChange={(e) => {
-                      setFirstName(e.target.value);
+                      setdisplayName(e.target.value);
                     }}
-                    value={firstName}
-                  />
-                  <input
-                    className="h-10 rounded-full bg-primaryDarker border-2 border-stone-400 hover:border-secondaryDarker/50 focus:border-accent focus:border-2 focus:outline-none focus:shadow-accent/20 focus:shadow-md px-4"
-                    type="text"
-                    placeholder="Last Name"
-                    required
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                    }}
-                    value={lastName}
+                    value={displayName}
                   />
                   <input
                     className="h-10 rounded-full bg-primaryDarker border-2 border-stone-400 hover:border-secondaryDarker/50 focus:border-accent focus:border-2 focus:outline-none focus:shadow-accent/20 focus:shadow-md px-4"

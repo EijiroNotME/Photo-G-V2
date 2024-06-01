@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { db, auth } from "../firebase/config";
 import { signInWithPopup } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp, Timestamp, updateDoc } from "firebase/firestore";
 import { GoogleAuthProvider } from "firebase/auth";
 
 function useSignUpGoogle() {
@@ -34,14 +34,21 @@ function useSignUpGoogle() {
       if (!docSnap.exists()) {
         // User does not exist, create a new user document in Firestore
         await setDoc(userRef, {
-          firstName: googleUser.displayName,
-          lastName: "",
+          displayName: googleUser.displayName,
+          photoURL: googleUser.photoURL,
           school: "",
           campus: "",
           course: "",
           email: googleUser.email,
+          created: serverTimestamp() as Timestamp,
+          lastLogin: serverTimestamp() as Timestamp,
+        });
+      }else{
+        await updateDoc(doc(db, 'users', googleUser.uid), {
+          lastLogin: serverTimestamp() as Timestamp
         });
       }
+      
       setIsPendingGoogle(false);
     } catch (error: any) {
       if (

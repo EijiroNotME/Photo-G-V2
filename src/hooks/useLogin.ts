@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 import { signInWithEmailAndPassword  } from "firebase/auth";
+import { Timestamp, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
 
 function useLogin() {
   // Errors
@@ -20,6 +21,11 @@ function useLogin() {
       if (!res) {
         throw new Error("Could not complete signin");
       }
+      const userId = res.user.uid;
+      await updateDoc(doc(db, 'users', userId), {
+        lastLogin: serverTimestamp() as Timestamp
+      });
+      
       setIsPending(false);
     } catch (error: any) {
       console.error("Error during signin:", error);

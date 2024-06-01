@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { db, auth } from "../firebase/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { Timestamp, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { UserData } from "../types/users";
 
 function useSignup() {
@@ -18,8 +18,7 @@ function useSignup() {
   const signup = async (
     email: string,
     password: string,
-    firstName: string,
-    lastName: string,
+    displayName: string,
     school: string,
     campus: string,
     course: string
@@ -36,12 +35,14 @@ function useSignup() {
       const userId = res.user.uid;
 
       const userData: UserData = {
-        firstName,
-        lastName,
+        displayName,
+        photoURL: "",
         school,
         campus,
         course,
         email,
+        created: serverTimestamp() as Timestamp,
+        lastLogin: serverTimestamp() as Timestamp,
       };
 
       // Set user document in Firestore

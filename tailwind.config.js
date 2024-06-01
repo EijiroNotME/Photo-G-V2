@@ -24,6 +24,13 @@ export default {
 
         accent: "#0367FD",
         google: "#F2F2F2",
+
+        success: "#28a745", // Suitable green for success
+        successDark: "#218838", // Darker green for success
+        error: "#dc3545", // Suitable red for error
+        errorDark: "#c82333", // Darker red for error
+        caution: "#ffc107", // Suitable yellow for caution
+        cautionDark: "#e0a800", // Darker yellow for caution
       },
     },
   },

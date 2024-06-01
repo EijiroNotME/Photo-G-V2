@@ -3,16 +3,18 @@ import AddImageModal from '../add-image-modal/add-image-modal.tsx';
 import useLogout from '../../hooks/useLogout.ts';
 import { FaPlus } from 'react-icons/fa';
 
+
 function HomePageBody() {
   const { logout, error, isPending } = useLogout();
-  const [Clicked, SetClicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    SetClicked(!Clicked);
+    setClicked(!clicked);
   };
 
   return (
     <div>
+      
       <div>
         <button
           onClick={handleClick}
@@ -22,8 +24,11 @@ function HomePageBody() {
         </button>
       </div>
 
-      {Clicked && (
-        <AddImageModal isOpen={Clicked} handleClose={handleClick}/>
+      {clicked && (
+        <div className='z-10'>
+          <AddImageModal isOpen={clicked} handleClose={handleClick} />
+        </div>
+        
       )}
 
       <button onClick={logout} className="btn-logout" disabled={isPending}>

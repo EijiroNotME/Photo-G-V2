@@ -1,3 +1,6 @@
+import daisyui from './node_modules/daisyui'
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -34,6 +37,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
+  daisyui: {
+    themes: ["light"] // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+   
+  },
 }
 

@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { FaImage, FaTimes } from "react-icons/fa";
-import usePost from "../../hooks/usePost";
 import Spinner from "../spinner/spinner";
 import Confirmation from "../alerts/confirmation.tsx";  // Import the confirmation component
+import useFirestore from "../../hooks/useFirestore.ts";
 
 const AddImageModal = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +17,8 @@ const AddImageModal = () => {
   const [description, setDescription] = useState<string>("");
   const [categories, setCategories] = useState<string[]>([]);
 
-  const { errorPost, isPendingPost, imageURL, addPost } = usePost();
+  const { state, addPost } = useFirestore();
+
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
@@ -40,11 +41,11 @@ const AddImageModal = () => {
   }, []);
 
   useEffect(() => {
-    if (imageURL) {
+    if (state.success) {
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000);
     }
-  }, [imageURL]);
+  }, [state.success]);
 
   const handleIconClick = () => {
     fileInputRef.current?.click();
@@ -84,6 +85,7 @@ const AddImageModal = () => {
       setTitle("");
       setDescription("");
       setCategories([]);
+      setCategoryInput("");
       setFile(null);
       setPreviewImage(undefined);
     }
@@ -93,10 +95,10 @@ const AddImageModal = () => {
     if (event.key === "Enter") {
       handleAddCategory(categoryInput);
     }
-  };
+  }; 
 
   const handleCloseModal = () => {
-    if (title || description || categories.length > 0 || previewImage) {
+    if (title || description || categories.length > 0 || previewImage || categoryInput) {
       setShowConfirmation(true);
     } else {
       const modal = document.getElementById('my_modal_3');
@@ -111,6 +113,7 @@ const AddImageModal = () => {
     setDescription("");
     setCategories([]);
     setFile(null);
+    setCategoryInput("");
     setPreviewImage(undefined);
     setShowConfirmation(false);
     const modal = document.getElementById('my_modal_3');
@@ -229,7 +232,7 @@ const AddImageModal = () => {
                     className="btn p-2 w-20 bg-secondary text-primary rounded-md transition-all ease-in hover:bg-accent"
                     onClick={handleSubmit}
                   >
-                    {isPendingPost ? <Spinner /> : 'Share'}
+                    {state.isPending ? <Spinner /> : 'Share'}
                   </button>
                   <button
                     type="button"
@@ -240,7 +243,7 @@ const AddImageModal = () => {
                   </button>
                 </div>
               </div>
-              {errorPost && <p>Error: {errorPost}</p>}
+              {state.error && <p>Error: {state.error}</p>}
               {showSuccessMessage && (
                 <div className="toast toast-top toast-center">
                   <div className="alert alert-success">

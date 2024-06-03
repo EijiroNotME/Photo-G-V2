@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import AddImageModal from '../add-image-modal/add-image-modal.tsx';
-// import LandingPageBg from '../landing-page-bg/landing-page-bg.tsx'
+
 
 function HomePageBody() {
   return (
@@ -20,6 +20,8 @@ function HomePageBody() {
        
         <FaPlus />
       </button>
+
+      <ImageLoader category={["all"]}/>
     </div>
   );
 }

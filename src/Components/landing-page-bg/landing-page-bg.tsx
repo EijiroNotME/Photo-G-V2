@@ -41,7 +41,6 @@ function LandingPageBg() {
               key={index} 
               src={url} 
               alt={`Unsplash image ${index + 1}`} 
-              loading='lazy'
               className="w-full h-auto object-cover rounded-2xl opacity-85"
             />
           ))

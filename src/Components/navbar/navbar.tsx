@@ -21,7 +21,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-md shadow-secondary/5">
+    <div className="navbar bg-base-100 shadow-md shadow-secondary/5 skeleton">
       <div className="flex-1">
         <NavLink to="/home"><span className="font-bold p-3 text-4xl cursor-pointer">Code<span className="text-accent">Pix</span></span></NavLink>
       </div>
@@ -31,7 +31,7 @@ function Navbar() {
         </div>
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <div className="w-10 rounded-full skeleton">
               <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
           </div>
@@ -42,7 +42,7 @@ function Navbar() {
                 {/* <span className="badge">New</span> */}
               </a>
             </li>
-            <li><a>Settings</a></li>
+            <li><NavLink to="/settings"><a>Settings</a></NavLink></li>
             <li>
               <button onClick={handleLogoutClick} disabled={isPending}>
                 {isPending ? "Logging out..." : "Logout"}

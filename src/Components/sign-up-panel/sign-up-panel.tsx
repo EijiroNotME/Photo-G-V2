@@ -30,7 +30,7 @@ function SignUpPanel() {
   return (
     <div className="w-full h-screen m-0 p-0 overflow-hidden">
       <div className="h-full flex items-center justify-center">
-        <div className="w-[95%] sm:w-[65%] md:w-[55%] lg:w-[45%] xl:w-[30%] bg-primaryDarker rounded-2xl border-2 shadow-2xl shadow-gray-600 flex justify-center">
+        <div className="w-[95%] sm:w-[60%] md:w-[50%] lg:w-[40%] xl:w-[30%] 2xl:w-[23%] bg-primaryDarker rounded-2xl border-2 shadow-2xl shadow-gray-600 flex justify-center">
           <div className="my-10 w-full m-20">
             <h1 className="font-bold text-5xl text-secondaryDarker">
               <NavLink to="/">

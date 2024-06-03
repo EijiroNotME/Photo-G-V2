@@ -13,6 +13,7 @@ import LogInPage from "./Pages/log-in-page/log-in-page.tsx";
 import HomePage from "./Pages/home-page/home-page.tsx";
 import VerificationPage from "./Pages/verify-page/verify-page.tsx"
 import ForgotPasswordPage from "./Pages/forgotPassword-page/forgotPassword-page.tsx";
+import SettingsPage from "./Pages/settings-page/settings-page.tsx";
 
 import { useAuth } from "./context/authContext";
  
@@ -55,6 +56,12 @@ function App() {
             path="/home"
             element={
               currentUser && currentUser.emailVerified ? <HomePage /> : <Navigate to="/log-in" />
+            }
+          />
+           <Route
+            path="/settings"
+            element={
+              currentUser && currentUser.emailVerified ? <SettingsPage /> : <Navigate to="/home" />
             }
           />
         </Routes>

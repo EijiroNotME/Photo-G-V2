@@ -33,7 +33,7 @@ function Navbar() {
 
 
   return (
-    <div className="navbar bg-base-100 shadow-md shadow-secondary/5">
+    <div className="navbar bg-base-100 shadow-md shadow-secondary/5 skeleton">
       <div className="flex-1">
         <NavLink to="/home">
           <span className="font-bold p-3 text-4xl cursor-pointer">
@@ -50,25 +50,7 @@ function Navbar() {
           />
         </div>
         <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            {currentUser?.photoURL ? (
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={currentUser?.photoURL}
-                />
-              </div>
-            ) : (
-              <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content rounded-full w-10">
-                  <span className="text-2xl ">{getInitials(currentUser?.displayName)}</span>
-                </div>
-              </div>
-            )}
+
           </div>
           <ul
             tabIndex={0}
@@ -80,9 +62,7 @@ function Navbar() {
                 {/* <span className="badge">New</span> */}
               </a>
             </li>
-            <li>
-              <a>Settings</a>
-            </li>
+
             <li>
               <button onClick={handleLogoutClick} disabled={isPending}>
                 {isPending ? "Logging out..." : "Logout"}

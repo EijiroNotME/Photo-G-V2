@@ -26,11 +26,11 @@ const ImageLoader: React.FC<ImageLoaderProps> = ({ category }) => {
     <div>
       {!isPending ? (
         <div className="h-screen overflow-hidden">
-          <div className="mt-[-20px] columns-3 gap-2 lg:gap-4 sm:columns-4 md:columns-5 lg:columns-6 xl:columns-7 [&>img:not(:first-child)]:mt-2 lg:[&>img:not(:first-child)]:mt-4">
+          <div className="m-5 columns-2 gap-2 lg:gap-4 sm:columns-4 md:columns-5 lg:columns-6 xl:columns-7 [&>img:not(:first-child)]:mt-2 lg:[&>img:not(:first-child)]:mt-4">
             {images.map((post) => (
               <div key={post.imageURL}>
                 {/* <h3>{post.title}</h3> */}
-                <img src={post.imageURL} alt={post.title} />
+                <img src={post.imageURL} alt={post.title} className="rounded-lg mb-5"/>
                 {/* <p>{post.description}</p> */}
               </div>
             ))}
